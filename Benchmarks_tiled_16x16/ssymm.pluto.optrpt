@@ -1,0 +1,210 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: true
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 0 (user-specified)
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: 10000
+  -inline-max-per-compile: 500000
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: main()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (main()) [1/1=100.0%] /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(39,1)
+  -> EXTERN: (52,1) printf(const char *__restrict__, ...)
+  -> EXTERN: (55,15) malloc(size_t)
+  -> EXTERN: (56,15) memalign(size_t, size_t)
+  -> EXTERN: (62,15) malloc(size_t)
+  -> EXTERN: (63,15) memalign(size_t, size_t)
+  -> EXTERN: (68,16) malloc(size_t)
+  -> EXTERN: (69,15) memalign(size_t, size_t)
+  -> EXTERN: (75,1) printf(const char *__restrict__, ...)
+  -> EXTERN: (101,9) floor(double)
+  -> EXTERN: (104,21) floor(double)
+  -> EXTERN: (104,21) floor(double)
+  -> EXTERN: (105,23) floor(double)
+  -> EXTERN: (105,23) floor(double)
+  -> EXTERN: (118,7) floor(double)
+  -> EXTERN: (121,19) floor(double)
+  -> EXTERN: (121,19) floor(double)
+  -> EXTERN: (135,9) floor(double)
+  -> EXTERN: (138,21) floor(double)
+  -> EXTERN: (138,21) floor(double)
+  -> EXTERN: (139,24) floor(double)
+  -> EXTERN: (139,24) floor(double)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(57,1)
+<Multiversioned v1>
+   remark #25228: Loop multiversioned for Data Dependence
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed FLOW dependence between a line 59 and a line 59
+   remark #15346: vector dependence: assumed ANTI dependence between a line 59 and a line 59
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(57,1)
+<Multiversioned v2>
+   remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(64,1)
+<Multiversioned v1>
+   remark #25228: Loop multiversioned for Data Dependence
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed FLOW dependence between b line 66 and b line 66
+   remark #15346: vector dependence: assumed ANTI dependence between b line 66 and b line 66
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(64,1)
+<Multiversioned v2>
+   remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(70,1)
+<Multiversioned v1>
+   remark #25228: Loop multiversioned for Data Dependence
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed FLOW dependence between c line 72 and c line 72
+   remark #15346: vector dependence: assumed ANTI dependence between c line 72 and c line 72
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(70,1)
+<Multiversioned v2>
+   remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(103,5)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(104,21)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(105,49)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(106,11)
+            remark #15542: loop was not vectorized: inner loop was already vectorized
+
+            LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(107,13)
+               remark #15542: loop was not vectorized: inner loop was already vectorized
+
+               LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(108,15)
+                  remark #15305: vectorization support: vector length 2
+                  remark #15399: vectorization support: unroll factor set to 8
+                  remark #15309: vectorization support: normalized vectorization overhead 0.525
+                  remark #15300: LOOP WAS VECTORIZED
+                  remark #15475: --- begin vector loop cost summary ---
+                  remark #15476: scalar loop cost: 27 
+                  remark #15477: vector loop cost: 2.500 
+                  remark #15478: estimated potential speedup: 7.600 
+                  remark #15488: --- end vector loop cost summary ---
+               LOOP END
+
+               LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(108,15)
+               <Remainder loop for vectorization>
+                  remark #15305: vectorization support: vector length 2
+                  remark #15309: vectorization support: normalized vectorization overhead 6.200
+                  remark #15301: REMAINDER LOOP WAS VECTORIZED
+               LOOP END
+
+               LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(108,15)
+               <Remainder loop for vectorization>
+               LOOP END
+            LOOP END
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(120,3)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed OUTPUT dependence between c line 128 and c line 128
+   remark #15346: vector dependence: assumed OUTPUT dependence between c line 128 and c line 128
+
+   LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(121,19)
+      remark #15523: loop was not vectorized: loop control variable t3 was found, but loop iteration count cannot be computed before executing the loop
+
+      LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(122,7)
+         remark #15344: loop was not vectorized: vector dependence prevents vectorization
+         remark #15346: vector dependence: assumed OUTPUT dependence between c line 128 and c line 128
+         remark #15346: vector dependence: assumed OUTPUT dependence between c line 128 and c line 128
+
+         LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(127,9)
+            remark #15344: loop was not vectorized: vector dependence prevents vectorization
+            remark #15346: vector dependence: assumed FLOW dependence between c line 128 and c line 128
+            remark #15346: vector dependence: assumed ANTI dependence between c line 128 and c line 128
+            remark #25439: unrolled with remainder by 4  
+         LOOP END
+
+         LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(127,9)
+         <Remainder>
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(137,5)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed OUTPUT dependence between c line 147 and c line 147
+   remark #15346: vector dependence: assumed OUTPUT dependence between c line 147 and c line 147
+
+   LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(138,21)
+      remark #15523: loop was not vectorized: loop control variable t3 was found, but loop iteration count cannot be computed before executing the loop
+
+      LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(139,24)
+         remark #15523: loop was not vectorized: loop control variable t4 was found, but loop iteration count cannot be computed before executing the loop
+
+         LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(140,11)
+            remark #15344: loop was not vectorized: vector dependence prevents vectorization
+            remark #15346: vector dependence: assumed OUTPUT dependence between c line 147 and c line 147
+            remark #15346: vector dependence: assumed OUTPUT dependence between c line 147 and c line 147
+
+            LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(141,13)
+               remark #15344: loop was not vectorized: vector dependence prevents vectorization
+               remark #15346: vector dependence: assumed OUTPUT dependence between c line 147 and c line 147
+               remark #15346: vector dependence: assumed OUTPUT dependence between c line 147 and c line 147
+
+               LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(146,15)
+                  remark #15344: loop was not vectorized: vector dependence prevents vectorization
+                  remark #15346: vector dependence: assumed FLOW dependence between c line 147 and c line 147
+                  remark #15346: vector dependence: assumed ANTI dependence between c line 147 and c line 147
+                  remark #25439: unrolled with remainder by 2  
+               LOOP END
+
+               LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm.pluto.c(146,15)
+               <Remainder>
+               LOOP END
+            LOOP END
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================

@@ -1,0 +1,140 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: true
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 0 (user-specified)
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: 10000
+  -inline-max-per-compile: 500000
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: main()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (main()) [1/1=100.0%] seidel_8192_16x16_malloc_pluto_init_comment.c(66,1)
+  -> EXTERN: (74,3) printf(const char *__restrict__, ...)
+  -> EXTERN: (78,17) malloc(size_t)
+  -> EXTERN: (79,17) memalign(size_t, size_t)
+  -> EXTERN: (85,2) printf(const char *__restrict__, ...)
+  -> EXTERN: (91,17) floor(double)
+  -> EXTERN: (91,17) floor(double)
+  -> EXTERN: (92,20) floor(double)
+  -> EXTERN: (92,20) floor(double)
+  -> EXTERN: (92,20) floor(double)
+  -> EXTERN: (92,20) floor(double)
+  -> EXTERN: (93,15) ceil(double)
+  -> EXTERN: (93,15) ceil(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+  -> EXTERN: (93,51) floor(double)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at seidel_8192_16x16_malloc_pluto_init_comment.c(80,2)
+<Multiversioned v1>
+   remark #25228: Loop multiversioned for Data Dependence
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed FLOW dependence between a line 82 and a line 82
+   remark #15346: vector dependence: assumed ANTI dependence between a line 82 and a line 82
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at seidel_8192_16x16_malloc_pluto_init_comment.c(80,2)
+<Multiversioned v2>
+   remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at seidel_8192_16x16_malloc_pluto_init_comment.c(91,17)
+   remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+   LOOP BEGIN at seidel_8192_16x16_malloc_pluto_init_comment.c(92,64)
+      remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+      LOOP BEGIN at seidel_8192_16x16_malloc_pluto_init_comment.c(93,184)
+         remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+         LOOP BEGIN at seidel_8192_16x16_malloc_pluto_init_comment.c(94,9)
+            remark #15344: loop was not vectorized: vector dependence prevents vectorization
+            remark #15346: vector dependence: assumed OUTPUT dependence between a line 97 and a line 97
+            remark #15346: vector dependence: assumed OUTPUT dependence between a line 97 and a line 97
+
+            LOOP BEGIN at seidel_8192_16x16_malloc_pluto_init_comment.c(95,11)
+               remark #15344: loop was not vectorized: vector dependence prevents vectorization
+               remark #15346: vector dependence: assumed OUTPUT dependence between a line 97 and a line 97
+               remark #15346: vector dependence: assumed OUTPUT dependence between a line 97 and a line 97
+
+               LOOP BEGIN at seidel_8192_16x16_malloc_pluto_init_comment.c(96,13)
+                  remark #15344: loop was not vectorized: vector dependence prevents vectorization
+                  remark #15346: vector dependence: assumed FLOW dependence between a line 97 and a line 97
+                  remark #15346: vector dependence: assumed ANTI dependence between a line 97 and a line 97
+               LOOP END
+            LOOP END
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================

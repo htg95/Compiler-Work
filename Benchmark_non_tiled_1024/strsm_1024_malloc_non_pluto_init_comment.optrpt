@@ -1,0 +1,111 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: true
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 0 (user-specified)
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: 10000
+  -inline-max-per-compile: 500000
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: main()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (main()) [1/1=100.0%] /home/mdl/hut95/Benchmark_non_tiled_1024/strsm_1024_malloc_non_pluto_init_comment.c(65,1)
+  -> EXTERN: (73,1) printf(const char *__restrict__, ...)
+  -> EXTERN: (76,16) malloc(size_t)
+  -> EXTERN: (77,15) memalign(unsigned long long, unsigned long long)
+  -> EXTERN: (83,15) malloc(size_t)
+  -> EXTERN: (84,15) memalign(unsigned long long, unsigned long long)
+  -> EXTERN: (90,2) printf(const char *__restrict__, ...)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at /home/mdl/hut95/Benchmark_non_tiled_1024/strsm_1024_malloc_non_pluto_init_comment.c(78,1)
+<Multiversioned v1>
+   remark #25228: Loop multiversioned for Data Dependence
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed FLOW dependence between a line 80 and a line 80
+   remark #15346: vector dependence: assumed ANTI dependence between a line 80 and a line 80
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmark_non_tiled_1024/strsm_1024_malloc_non_pluto_init_comment.c(78,1)
+<Multiversioned v2>
+   remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmark_non_tiled_1024/strsm_1024_malloc_non_pluto_init_comment.c(85,1)
+<Multiversioned v1>
+   remark #25228: Loop multiversioned for Data Dependence
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed FLOW dependence between b line 87 and b line 87
+   remark #15346: vector dependence: assumed ANTI dependence between b line 87 and b line 87
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmark_non_tiled_1024/strsm_1024_malloc_non_pluto_init_comment.c(85,1)
+<Multiversioned v2>
+   remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmark_non_tiled_1024/strsm_1024_malloc_non_pluto_init_comment.c(97,2)
+   remark #25445: Loop Interchange not done due to: Data Dependencies
+   remark #25446: Dependencies found between following statements:  [From_Line# -> (Dependency Type) To_Line#]
+   remark #25447: Dependence found between following statements:  [100 -> (Output) 101]
+   remark #25447: Dependence found between following statements:  [100 -> (Flow) 101]
+   remark #25447: Dependence found between following statements:  [100 -> (Output) 100]
+   remark #25447: Dependence found between following statements:  [100 -> (Anti) 101]
+   remark #25447: Dependence found between following statements:  [100 -> (Flow) 100]
+   remark #25447: Dependence found between following statements:  [100 -> (Anti) 100]
+   remark #25447: Dependence found between following statements:  [101 -> (Output) 101]
+   remark #25447: Dependence found between following statements:  [101 -> (Flow) 101]
+   remark #25447: Dependence found between following statements:  [101 -> (Anti) 101]
+   remark #25447: Dependence found between following statements:  [101 -> (Output) 100]
+   remark #25447: Dependence found between following statements:  [101 -> (Anti) 100]
+   remark #25447: Dependence found between following statements:  [101 -> (Flow) 100]
+   remark #25451: Advice: Loop Interchange, if possible, might help loopnest. Suggested Permutation : ( 1 2 ) --> ( 2 1 ) 
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed OUTPUT dependence between b line 100 and b line 101
+   remark #15346: vector dependence: assumed OUTPUT dependence between b line 101 and b line 100
+
+   LOOP BEGIN at /home/mdl/hut95/Benchmark_non_tiled_1024/strsm_1024_malloc_non_pluto_init_comment.c(98,3)
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization
+      remark #15346: vector dependence: assumed OUTPUT dependence between b line 100 and b line 101
+      remark #15346: vector dependence: assumed OUTPUT dependence between b line 101 and b line 100
+
+      LOOP BEGIN at /home/mdl/hut95/Benchmark_non_tiled_1024/strsm_1024_malloc_non_pluto_init_comment.c(99,4)
+         remark #15344: loop was not vectorized: vector dependence prevents vectorization
+         remark #15346: vector dependence: assumed OUTPUT dependence between b line 100 and b line 101
+         remark #15346: vector dependence: assumed OUTPUT dependence between b line 101 and b line 100
+         remark #25439: unrolled with remainder by 2  
+      LOOP END
+
+      LOOP BEGIN at /home/mdl/hut95/Benchmark_non_tiled_1024/strsm_1024_malloc_non_pluto_init_comment.c(99,4)
+      <Remainder>
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================

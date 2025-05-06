@@ -1,0 +1,450 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: true
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 0 (user-specified)
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: 10000
+  -inline-max-per-compile: 500000
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: main()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (main()) [1/1=100.0%] jacobi-2d-imper_1024_16x16_malloc_pluto.c(57,1)
+  -> EXTERN: (63,2) printf(const char *__restrict__, ...)
+  -> EXTERN: (68,21) malloc(size_t)
+  -> EXTERN: (69,21) memalign(size_t, size_t)
+  -> EXTERN: (75,21) malloc(size_t)
+  -> EXTERN: (76,21) memalign(size_t, size_t)
+  -> EXTERN: (81,2) printf(const char *__restrict__, ...)
+  -> EXTERN: (106,17) floor(double)
+  -> EXTERN: (106,17) floor(double)
+  -> EXTERN: (107,22) floor(double)
+  -> EXTERN: (107,22) floor(double)
+  -> EXTERN: (107,22) floor(double)
+  -> EXTERN: (107,22) floor(double)
+  -> EXTERN: (108,15) ceil(double)
+  -> EXTERN: (108,15) ceil(double)
+  -> EXTERN: (108,50) floor(double)
+  -> EXTERN: (108,50) floor(double)
+  -> EXTERN: (108,50) floor(double)
+  -> EXTERN: (108,50) floor(double)
+  -> EXTERN: (108,50) floor(double)
+  -> EXTERN: (108,50) floor(double)
+  -> EXTERN: (108,50) floor(double)
+  -> EXTERN: (108,50) floor(double)
+  -> EXTERN: (108,50) floor(double)
+  -> EXTERN: (108,50) floor(double)
+  -> EXTERN: (109,20) floor(double)
+  -> EXTERN: (116,20) floor(double)
+  -> EXTERN: (130,19) ceil(double)
+  -> EXTERN: (130,19) ceil(double)
+  -> EXTERN: (130,53) floor(double)
+  -> EXTERN: (130,53) floor(double)
+  -> EXTERN: (130,53) floor(double)
+  -> EXTERN: (130,53) floor(double)
+  -> EXTERN: (130,53) floor(double)
+  -> EXTERN: (130,53) floor(double)
+  -> EXTERN: (130,53) floor(double)
+  -> EXTERN: (130,53) floor(double)
+  -> EXTERN: (143,17) ceil(double)
+  -> EXTERN: (143,17) ceil(double)
+  -> EXTERN: (143,17) ceil(double)
+  -> EXTERN: (143,17) ceil(double)
+  -> EXTERN: (143,17) ceil(double)
+  -> EXTERN: (143,17) ceil(double)
+  -> EXTERN: (143,17) ceil(double)
+  -> EXTERN: (143,17) ceil(double)
+  -> EXTERN: (143,76) floor(double)
+  -> EXTERN: (143,76) floor(double)
+  -> EXTERN: (143,76) floor(double)
+  -> EXTERN: (143,76) floor(double)
+  -> EXTERN: (143,76) floor(double)
+  -> EXTERN: (143,76) floor(double)
+  -> EXTERN: (143,76) floor(double)
+  -> EXTERN: (143,76) floor(double)
+  -> EXTERN: (152,17) ceil(double)
+  -> EXTERN: (152,17) ceil(double)
+  -> EXTERN: (152,17) ceil(double)
+  -> EXTERN: (152,17) ceil(double)
+  -> EXTERN: (152,17) ceil(double)
+  -> EXTERN: (152,17) ceil(double)
+  -> EXTERN: (152,17) ceil(double)
+  -> EXTERN: (152,17) ceil(double)
+  -> EXTERN: (152,76) floor(double)
+  -> EXTERN: (152,76) floor(double)
+  -> EXTERN: (152,76) floor(double)
+  -> EXTERN: (152,76) floor(double)
+  -> EXTERN: (152,76) floor(double)
+  -> EXTERN: (152,76) floor(double)
+  -> EXTERN: (152,76) floor(double)
+  -> EXTERN: (152,76) floor(double)
+  -> EXTERN: (163,17) ceil(double)
+  -> EXTERN: (163,17) ceil(double)
+  -> EXTERN: (163,17) ceil(double)
+  -> EXTERN: (163,17) ceil(double)
+  -> EXTERN: (163,17) ceil(double)
+  -> EXTERN: (163,17) ceil(double)
+  -> EXTERN: (163,17) ceil(double)
+  -> EXTERN: (163,17) ceil(double)
+  -> EXTERN: (172,41) floor(double)
+  -> EXTERN: (172,41) floor(double)
+  -> EXTERN: (172,41) floor(double)
+  -> EXTERN: (172,41) floor(double)
+  -> EXTERN: (190,19) ceil(double)
+  -> EXTERN: (190,19) ceil(double)
+  -> EXTERN: (190,19) ceil(double)
+  -> EXTERN: (190,19) ceil(double)
+  -> EXTERN: (203,17) ceil(double)
+  -> EXTERN: (203,17) ceil(double)
+  -> EXTERN: (203,17) ceil(double)
+  -> EXTERN: (203,17) ceil(double)
+  -> EXTERN: (203,63) floor(double)
+  -> EXTERN: (203,63) floor(double)
+  -> EXTERN: (203,63) floor(double)
+  -> EXTERN: (203,63) floor(double)
+  -> EXTERN: (203,63) floor(double)
+  -> EXTERN: (203,63) floor(double)
+  -> EXTERN: (203,63) floor(double)
+  -> EXTERN: (203,63) floor(double)
+  -> EXTERN: (203,63) floor(double)
+  -> EXTERN: (203,63) floor(double)
+  -> EXTERN: (203,63) floor(double)
+  -> EXTERN: (203,63) floor(double)
+  -> EXTERN: (203,63) floor(double)
+  -> EXTERN: (203,63) floor(double)
+  -> EXTERN: (203,63) floor(double)
+  -> EXTERN: (203,63) floor(double)
+  -> EXTERN: (215,17) ceil(double)
+  -> EXTERN: (215,17) ceil(double)
+  -> EXTERN: (215,17) ceil(double)
+  -> EXTERN: (215,17) ceil(double)
+  -> EXTERN: (226,17) ceil(double)
+  -> EXTERN: (226,17) ceil(double)
+  -> EXTERN: (226,17) ceil(double)
+  -> EXTERN: (226,17) ceil(double)
+  -> EXTERN: (226,63) floor(double)
+  -> EXTERN: (226,63) floor(double)
+  -> EXTERN: (226,63) floor(double)
+  -> EXTERN: (226,63) floor(double)
+  -> EXTERN: (226,63) floor(double)
+  -> EXTERN: (226,63) floor(double)
+  -> EXTERN: (226,63) floor(double)
+  -> EXTERN: (226,63) floor(double)
+  -> EXTERN: (226,63) floor(double)
+  -> EXTERN: (226,63) floor(double)
+  -> EXTERN: (226,63) floor(double)
+  -> EXTERN: (226,63) floor(double)
+  -> EXTERN: (226,63) floor(double)
+  -> EXTERN: (226,63) floor(double)
+  -> EXTERN: (226,63) floor(double)
+  -> EXTERN: (226,63) floor(double)
+  -> EXTERN: (238,17) ceil(double)
+  -> EXTERN: (238,17) ceil(double)
+  -> EXTERN: (238,17) ceil(double)
+  -> EXTERN: (238,17) ceil(double)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(70,2)
+<Multiversioned v1>
+   remark #25228: Loop multiversioned for Data Dependence
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed FLOW dependence between a line 72 and a line 72
+   remark #15346: vector dependence: assumed ANTI dependence between a line 72 and a line 72
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(70,2)
+<Multiversioned v2>
+   remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(77,2)
+<Multiversioned v1>
+   remark #25228: Loop multiversioned for Data Dependence
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed FLOW dependence between b line 79 and b line 79
+   remark #15346: vector dependence: assumed ANTI dependence between b line 79 and b line 79
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(77,2)
+<Multiversioned v2>
+   remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(106,17)
+   remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+   LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(107,68)
+      remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+      LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(108,50)
+         remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+         LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(130,109)
+            remark #15522: loop was not vectorized: loop control flow is too complex. Try using canonical loop form
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(131,13)
+               remark #15344: loop was not vectorized: vector dependence prevents vectorization
+               remark #15346: vector dependence: assumed FLOW dependence between b line 133 and b line 136
+               remark #15346: vector dependence: assumed ANTI dependence between b line 136 and b line 133
+
+               LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(132,15)
+                  remark #15344: loop was not vectorized: vector dependence prevents vectorization
+                  remark #15346: vector dependence: assumed FLOW dependence between b line 133 and b line 134
+                  remark #15346: vector dependence: assumed ANTI dependence between b line 134 and b line 133
+               LOOP END
+            LOOP END
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(138,13)
+               remark #15310: loop was not vectorized: operation cannot be vectorized   [ jacobi-2d-imper_1024_16x16_malloc_pluto.c(139,15) ]
+               remark #25439: unrolled with remainder by 2  
+            LOOP END
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(138,13)
+            <Remainder>
+            LOOP END
+         LOOP END
+
+         LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(143,132)
+            remark #15522: loop was not vectorized: loop control flow is too complex. Try using canonical loop form
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(144,11)
+               remark #15344: loop was not vectorized: vector dependence prevents vectorization
+               remark #15346: vector dependence: assumed FLOW dependence between b line 146 and b line 149
+               remark #15346: vector dependence: assumed ANTI dependence between b line 149 and b line 146
+               remark #25015: Estimate of max trip count of loop=16
+
+               LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(145,13)
+                  remark #15344: loop was not vectorized: vector dependence prevents vectorization
+                  remark #15346: vector dependence: assumed FLOW dependence between b line 146 and b line 147
+                  remark #15346: vector dependence: assumed ANTI dependence between b line 147 and b line 146
+               LOOP END
+            LOOP END
+         LOOP END
+
+         LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(152,132)
+            remark #15522: loop was not vectorized: loop control flow is too complex. Try using canonical loop form
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(153,11)
+               remark #15344: loop was not vectorized: vector dependence prevents vectorization
+               remark #15346: vector dependence: assumed FLOW dependence between b line 155 and b line 156
+               remark #15346: vector dependence: assumed ANTI dependence between b line 156 and b line 155
+
+               LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(154,13)
+                  remark #15344: loop was not vectorized: vector dependence prevents vectorization
+                  remark #15346: vector dependence: assumed FLOW dependence between b line 155 and b line 156
+                  remark #15346: vector dependence: assumed ANTI dependence between b line 156 and b line 155
+                  remark #25436: completely unrolled by 16  
+               LOOP END
+            LOOP END
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(159,11)
+               remark #15310: loop was not vectorized: operation cannot be vectorized   [ jacobi-2d-imper_1024_16x16_malloc_pluto.c(160,13) ]
+               remark #25436: completely unrolled by 16  
+            LOOP END
+         LOOP END
+
+         LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(163,9)
+            remark #15344: loop was not vectorized: vector dependence prevents vectorization
+            remark #15346: vector dependence: assumed FLOW dependence between b line 166 and b line 167
+            remark #15346: vector dependence: assumed ANTI dependence between b line 167 and b line 166
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(164,11)
+               remark #15344: loop was not vectorized: vector dependence prevents vectorization
+               remark #15346: vector dependence: assumed FLOW dependence between b line 166 and b line 167
+               remark #15346: vector dependence: assumed ANTI dependence between b line 167 and b line 166
+               remark #25015: Estimate of max trip count of loop=16
+
+               LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(165,13)
+                  remark #15344: loop was not vectorized: vector dependence prevents vectorization
+                  remark #15346: vector dependence: assumed FLOW dependence between b line 166 and b line 167
+                  remark #15346: vector dependence: assumed ANTI dependence between b line 167 and b line 166
+                  remark #25436: completely unrolled by 16  
+               LOOP END
+            LOOP END
+         LOOP END
+
+         LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(172,85)
+            remark #15522: loop was not vectorized: loop control flow is too complex. Try using canonical loop form
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(173,13)
+               remark #15310: loop was not vectorized: operation cannot be vectorized   [ jacobi-2d-imper_1024_16x16_malloc_pluto.c(174,15) ]
+               remark #25439: unrolled with remainder by 4  
+            LOOP END
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(173,13)
+            <Remainder>
+            LOOP END
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(176,13)
+               remark #15344: loop was not vectorized: vector dependence prevents vectorization
+               remark #15346: vector dependence: assumed FLOW dependence between b line 177 and b line 182
+               remark #15346: vector dependence: assumed ANTI dependence between b line 182 and b line 177
+               remark #25015: Estimate of max trip count of loop=1020
+
+               LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(178,15)
+                  remark #15344: loop was not vectorized: vector dependence prevents vectorization
+                  remark #15346: vector dependence: assumed FLOW dependence between b line 179 and b line 180
+                  remark #15346: vector dependence: assumed ANTI dependence between b line 180 and b line 179
+               LOOP END
+            LOOP END
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(184,13)
+               remark #15310: loop was not vectorized: operation cannot be vectorized   [ jacobi-2d-imper_1024_16x16_malloc_pluto.c(185,15) ]
+               remark #25439: unrolled with remainder by 2  
+            LOOP END
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(184,13)
+            <Remainder>
+            LOOP END
+         LOOP END
+
+         LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(190,11)
+            remark #15344: loop was not vectorized: vector dependence prevents vectorization
+            remark #15346: vector dependence: assumed FLOW dependence between b line 192 and b line 198
+            remark #15346: vector dependence: assumed ANTI dependence between b line 198 and b line 192
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(191,13)
+               remark #15310: loop was not vectorized: operation cannot be vectorized   [ jacobi-2d-imper_1024_16x16_malloc_pluto.c(192,15) ]
+               remark #25439: unrolled with remainder by 4  
+            LOOP END
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(191,13)
+            <Remainder>
+            LOOP END
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(194,13)
+               remark #15344: loop was not vectorized: vector dependence prevents vectorization
+               remark #15346: vector dependence: assumed FLOW dependence between b line 195 and b line 198
+               remark #15346: vector dependence: assumed ANTI dependence between b line 198 and b line 195
+
+               LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(196,15)
+                  remark #15344: loop was not vectorized: vector dependence prevents vectorization
+                  remark #15346: vector dependence: assumed FLOW dependence between b line 197 and b line 198
+                  remark #15346: vector dependence: assumed ANTI dependence between b line 198 and b line 197
+               LOOP END
+            LOOP END
+         LOOP END
+
+         LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(203,131)
+            remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(204,11)
+               remark #15310: loop was not vectorized: operation cannot be vectorized   [ jacobi-2d-imper_1024_16x16_malloc_pluto.c(205,13) ]
+               remark #25439: unrolled with remainder by 4  
+            LOOP END
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(204,11)
+            <Remainder>
+            LOOP END
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(207,11)
+               remark #15344: loop was not vectorized: vector dependence prevents vectorization
+               remark #15346: vector dependence: assumed FLOW dependence between b line 209 and b line 212
+               remark #15346: vector dependence: assumed ANTI dependence between b line 212 and b line 209
+
+               LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(208,13)
+                  remark #15344: loop was not vectorized: vector dependence prevents vectorization
+                  remark #15346: vector dependence: assumed FLOW dependence between b line 209 and b line 210
+                  remark #15346: vector dependence: assumed ANTI dependence between b line 210 and b line 209
+               LOOP END
+            LOOP END
+         LOOP END
+
+         LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(215,9)
+            remark #15344: loop was not vectorized: vector dependence prevents vectorization
+            remark #15346: vector dependence: assumed FLOW dependence between b line 217 and b line 222
+            remark #15346: vector dependence: assumed ANTI dependence between b line 222 and b line 217
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(219,11)
+               remark #15344: loop was not vectorized: vector dependence prevents vectorization
+               remark #15346: vector dependence: assumed FLOW dependence between b line 221 and b line 222
+               remark #15346: vector dependence: assumed ANTI dependence between b line 222 and b line 221
+
+               LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(220,13)
+                  remark #15344: loop was not vectorized: vector dependence prevents vectorization
+                  remark #15346: vector dependence: assumed FLOW dependence between b line 221 and b line 222
+                  remark #15346: vector dependence: assumed ANTI dependence between b line 222 and b line 221
+                  remark #25436: completely unrolled by 16  
+               LOOP END
+            LOOP END
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(216,11)
+               remark #15310: loop was not vectorized: operation cannot be vectorized   [ jacobi-2d-imper_1024_16x16_malloc_pluto.c(217,13) ]
+               remark #25436: completely unrolled by 16  
+            LOOP END
+         LOOP END
+
+         LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(226,131)
+            remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(227,11)
+               remark #15344: loop was not vectorized: vector dependence prevents vectorization
+               remark #15346: vector dependence: assumed FLOW dependence between b line 228 and b line 231
+               remark #15346: vector dependence: assumed ANTI dependence between b line 231 and b line 228
+
+               LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(229,13)
+                  remark #15344: loop was not vectorized: vector dependence prevents vectorization
+                  remark #15346: vector dependence: assumed FLOW dependence between b line 230 and b line 231
+                  remark #15346: vector dependence: assumed ANTI dependence between b line 231 and b line 230
+               LOOP END
+            LOOP END
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(234,11)
+               remark #15310: loop was not vectorized: operation cannot be vectorized   [ jacobi-2d-imper_1024_16x16_malloc_pluto.c(235,13) ]
+               remark #25439: unrolled with remainder by 2  
+            LOOP END
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(234,11)
+            <Remainder>
+            LOOP END
+         LOOP END
+
+         LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(238,9)
+            remark #15344: loop was not vectorized: vector dependence prevents vectorization
+            remark #15346: vector dependence: assumed FLOW dependence between b line 240 and b line 243
+            remark #15346: vector dependence: assumed ANTI dependence between b line 243 and b line 240
+
+            LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(239,11)
+               remark #15344: loop was not vectorized: vector dependence prevents vectorization
+               remark #15346: vector dependence: assumed FLOW dependence between b line 240 and b line 243
+               remark #15346: vector dependence: assumed ANTI dependence between b line 243 and b line 240
+               remark #25015: Estimate of max trip count of loop=16
+
+               LOOP BEGIN at jacobi-2d-imper_1024_16x16_malloc_pluto.c(241,13)
+                  remark #15344: loop was not vectorized: vector dependence prevents vectorization
+                  remark #15346: vector dependence: assumed FLOW dependence between b line 242 and b line 243
+                  remark #15346: vector dependence: assumed ANTI dependence between b line 243 and b line 242
+               LOOP END
+            LOOP END
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================

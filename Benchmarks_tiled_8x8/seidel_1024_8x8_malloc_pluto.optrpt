@@ -1,0 +1,140 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: true
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 0 (user-specified)
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: 10000
+  -inline-max-per-compile: 500000
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: main()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (main()) [1/1=100.0%] /home/mdl/hut95/Benchmarks_tiled_8x8/seidel_1024_8x8_malloc_pluto.c(65,1)
+  -> EXTERN: (73,3) printf(const char *__restrict__, ...)
+  -> EXTERN: (77,17) malloc(size_t)
+  -> EXTERN: (78,17) memalign(size_t, size_t)
+  -> EXTERN: (84,2) printf(const char *__restrict__, ...)
+  -> EXTERN: (90,17) floor(double)
+  -> EXTERN: (90,17) floor(double)
+  -> EXTERN: (91,20) floor(double)
+  -> EXTERN: (91,20) floor(double)
+  -> EXTERN: (91,20) floor(double)
+  -> EXTERN: (91,20) floor(double)
+  -> EXTERN: (92,15) ceil(double)
+  -> EXTERN: (92,15) ceil(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+  -> EXTERN: (92,49) floor(double)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_8x8/seidel_1024_8x8_malloc_pluto.c(79,2)
+<Multiversioned v1>
+   remark #25228: Loop multiversioned for Data Dependence
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed FLOW dependence between a line 81 and a line 81
+   remark #15346: vector dependence: assumed ANTI dependence between a line 81 and a line 81
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_8x8/seidel_1024_8x8_malloc_pluto.c(79,2)
+<Multiversioned v2>
+   remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_8x8/seidel_1024_8x8_malloc_pluto.c(90,17)
+   remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+   LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_8x8/seidel_1024_8x8_malloc_pluto.c(91,60)
+      remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+      LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_8x8/seidel_1024_8x8_malloc_pluto.c(92,171)
+         remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+         LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_8x8/seidel_1024_8x8_malloc_pluto.c(93,9)
+            remark #15344: loop was not vectorized: vector dependence prevents vectorization
+            remark #15346: vector dependence: assumed OUTPUT dependence between a line 96 and a line 96
+            remark #15346: vector dependence: assumed OUTPUT dependence between a line 96 and a line 96
+
+            LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_8x8/seidel_1024_8x8_malloc_pluto.c(94,11)
+               remark #15344: loop was not vectorized: vector dependence prevents vectorization
+               remark #15346: vector dependence: assumed OUTPUT dependence between a line 96 and a line 96
+               remark #15346: vector dependence: assumed OUTPUT dependence between a line 96 and a line 96
+
+               LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_8x8/seidel_1024_8x8_malloc_pluto.c(95,13)
+                  remark #15344: loop was not vectorized: vector dependence prevents vectorization
+                  remark #15346: vector dependence: assumed FLOW dependence between a line 96 and a line 96
+                  remark #15346: vector dependence: assumed ANTI dependence between a line 96 and a line 96
+               LOOP END
+            LOOP END
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================

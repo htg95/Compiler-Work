@@ -1,0 +1,153 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: true
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 0 (user-specified)
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: 10000
+  -inline-max-per-compile: 500000
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: main()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (main()) [1/1=100.0%] /home/mdl/hut95/Benchmarks_tiled_16x16/lu_1024_16x16_malloc_pluto_init_comment.c(72,1)
+  -> EXTERN: (80,2) printf(const char *__restrict__, ...)
+  -> EXTERN: (82,16) malloc(size_t)
+  -> EXTERN: (83,17) memalign(size_t, size_t)
+  -> EXTERN: (89,2) printf(const char *__restrict__, ...)
+  -> EXTERN: (95,17) floor(double)
+  -> EXTERN: (95,17) floor(double)
+  -> EXTERN: (96,20) floor(double)
+  -> EXTERN: (96,20) floor(double)
+  -> EXTERN: (97,22) floor(double)
+  -> EXTERN: (97,22) floor(double)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/lu_1024_16x16_malloc_pluto_init_comment.c(84,2)
+<Multiversioned v1>
+   remark #25228: Loop multiversioned for Data Dependence
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed FLOW dependence between a line 86 and a line 86
+   remark #15346: vector dependence: assumed ANTI dependence between a line 86 and a line 86
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/lu_1024_16x16_malloc_pluto_init_comment.c(84,2)
+<Multiversioned v2>
+   remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/lu_1024_16x16_malloc_pluto_init_comment.c(95,17)
+   remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+   LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/lu_1024_16x16_malloc_pluto_init_comment.c(96,20)
+      remark #15523: loop was not vectorized: loop control variable t2 was found, but loop iteration count cannot be computed before executing the loop
+
+      LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/lu_1024_16x16_malloc_pluto_init_comment.c(97,22)
+         remark #15523: loop was not vectorized: loop control variable t3 was found, but loop iteration count cannot be computed before executing the loop
+
+         LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/lu_1024_16x16_malloc_pluto_init_comment.c(99,11)
+            remark #25084: Preprocess Loopnests: Moving Out Store    [ /home/mdl/hut95/Benchmarks_tiled_16x16/lu_1024_16x16_malloc_pluto_init_comment.c(100,13) ]
+            remark #15344: loop was not vectorized: vector dependence prevents vectorization
+            remark #15346: vector dependence: assumed OUTPUT dependence between a line 105 and a line 113
+            remark #15346: vector dependence: assumed OUTPUT dependence between a line 113 and a line 105
+
+            LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/lu_1024_16x16_malloc_pluto_init_comment.c(104,13)
+               remark #15344: loop was not vectorized: vector dependence prevents vectorization
+               remark #15346: vector dependence: assumed FLOW dependence between a line 105 and a line 105
+               remark #15346: vector dependence: assumed ANTI dependence between a line 105 and a line 105
+               remark #25439: unrolled with remainder by 2  
+            LOOP END
+
+            LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/lu_1024_16x16_malloc_pluto_init_comment.c(104,13)
+            <Remainder>
+            LOOP END
+
+            LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/lu_1024_16x16_malloc_pluto_init_comment.c(107,13)
+               remark #15344: loop was not vectorized: vector dependence prevents vectorization
+               remark #15346: vector dependence: assumed FLOW dependence between t5 line 107 and t5 line 113
+               remark #15346: vector dependence: assumed ANTI dependence between t5 line 113 and t5 line 107
+               remark #15346: vector dependence: assumed FLOW dependence between t5 line 107 and t5 line 113
+               remark #15346: vector dependence: assumed ANTI dependence between t5 line 113 and t5 line 107
+               remark #15346: vector dependence: assumed FLOW dependence between t5 line 107 and t5 line 113
+               remark #15346: vector dependence: assumed ANTI dependence between t5 line 113 and t5 line 107
+               remark #15346: vector dependence: assumed ANTI dependence between t5 line 113 and t5 line 107
+               remark #15346: vector dependence: assumed FLOW dependence between t5 line 107 and t5 line 113
+               remark #15346: vector dependence: assumed ANTI dependence between t5 line 113 and t5 line 107
+               remark #15346: vector dependence: assumed FLOW dependence between t5 line 107 and t5 line 113
+               remark #15346: vector dependence: assumed ANTI dependence between t5 line 113 and t5 line 107
+               remark #15346: vector dependence: assumed FLOW dependence between t5 line 107 and t5 line 113
+
+               LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/lu_1024_16x16_malloc_pluto_init_comment.c(112,15)
+                  remark #15344: loop was not vectorized: vector dependence prevents vectorization
+                  remark #15346: vector dependence: assumed FLOW dependence between a line 113 and a line 113
+                  remark #15346: vector dependence: assumed ANTI dependence between a line 113 and a line 113
+                  remark #25439: unrolled with remainder by 2  
+               LOOP END
+
+               LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/lu_1024_16x16_malloc_pluto_init_comment.c(112,15)
+               <Remainder>
+               LOOP END
+            LOOP END
+         LOOP END
+
+         LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/lu_1024_16x16_malloc_pluto_init_comment.c(123,11)
+            remark #15344: loop was not vectorized: vector dependence prevents vectorization
+            remark #15346: vector dependence: assumed FLOW dependence between a line 124 and a line 124
+            remark #15346: vector dependence: assumed ANTI dependence between a line 124 and a line 124
+            remark #25439: unrolled with remainder by 2  
+         LOOP END
+
+         LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/lu_1024_16x16_malloc_pluto_init_comment.c(123,11)
+         <Remainder>
+         LOOP END
+
+         LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/lu_1024_16x16_malloc_pluto_init_comment.c(128,11)
+            remark #15344: loop was not vectorized: vector dependence prevents vectorization
+            remark #15346: vector dependence: assumed OUTPUT dependence between a line 135 and a line 135
+            remark #15346: vector dependence: assumed OUTPUT dependence between a line 135 and a line 135
+
+            LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/lu_1024_16x16_malloc_pluto_init_comment.c(129,13)
+               remark #15344: loop was not vectorized: vector dependence prevents vectorization
+               remark #15346: vector dependence: assumed FLOW dependence between a line 135 and a line 135
+               remark #15346: vector dependence: assumed ANTI dependence between a line 135 and a line 135
+
+               LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/lu_1024_16x16_malloc_pluto_init_comment.c(134,15)
+                  remark #15344: loop was not vectorized: vector dependence prevents vectorization
+                  remark #15346: vector dependence: assumed FLOW dependence between a line 135 and a line 135
+                  remark #15346: vector dependence: assumed ANTI dependence between a line 135 and a line 135
+                  remark #25439: unrolled with remainder by 2  
+               LOOP END
+
+               LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/lu_1024_16x16_malloc_pluto_init_comment.c(134,15)
+               <Remainder>
+               LOOP END
+            LOOP END
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================

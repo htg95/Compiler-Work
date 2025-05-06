@@ -1,0 +1,124 @@
+#include <math.h>
+#define ceild(n,d)  ceil(((double)(n))/((double)(d)))
+#define floord(n,d) floor(((double)(n))/((double)(d)))
+#define max(x,y)    ((x) > (y)? (x) : (y))
+#define min(x,y)    ((x) < (y)? (x) : (y))
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <unistd.h>
+//#include <sys/time.h>
+#include <malloc.h>
+#include <assert.h>
+
+#define N 1024
+#define T 200
+// #pragma declarations
+// double a[N][N];
+// #pragma enddeclarations
+
+// #ifdef TIME
+// #define IF_TIME(foo) foo;
+// #else
+// #define IF_TIME(foo)
+// #endif
+
+// void init_array()
+// {
+    // int i, j;
+
+    // for (i=0; i<N; i++) {
+        // for (j=0; j<N; j++) {
+            // a[i][j] = i*i+j*j;
+        // }
+    // }
+// }
+
+
+// void print_array()
+// {
+    // int i, j;
+
+    // for (i=0; i<N; i++) {
+        // for (j=0; j<N; j++) {
+            // fprintf(stderr, "%0.2lf ", a[i][j]);
+            // if (j%80 == 20) fprintf(stderr, "\n");
+        // }
+    // }
+    // fprintf(stderr, "\n");
+// }
+
+// double rtclock()
+// {
+    // struct timezone Tzp;
+    // struct timeval Tp;
+    // int stat;
+    // stat = gettimeofday (&Tp, &Tzp);
+    // if (stat != 0) printf("Error return from gettimeofday: %d",stat);
+    // return(Tp.tv_sec + Tp.tv_usec*1.0e-6);
+// }
+
+// #define __PLACE_TO_INSERT_FORWARD_DECLARATIONS
+
+int main()
+{	
+	double **a;
+    int i, j, k, t;
+
+    double t_start, t_end;
+	int   size=(N)*(N)*sizeof(double);
+    // init_array() ;
+	int _4_zeros=1<<28;
+  printf ("_4_zeros %d  %p \n",_4_zeros, _4_zeros);  
+// #ifdef PERFCTR
+    // PERF_INIT; 
+// #endif
+  a=(double **) malloc(sizeof(double *)*(N));
+  a[0]=(double*)memalign(_4_zeros,size);
+	for(i=0;i<N;i++)
+	{	
+	a[i]=(*a + N*i);
+	}
+    // IF_TIME(t_start = rtclock());
+	printf("to know *pathDistanceMatrix  a  %p %p""",*a,&a[0][0]);
+
+  int t1, t2, t3, t4, t5, t6;
+ register int lbv, ubv;
+/* Start of CLooG code */
+if ((N >= 3) && (T >= 1)) {
+  for (t1=0;t1<=floord(T-1,8);t1++) {
+    for (t2=t1;t2<=min(floord(T+N-3,8),floord(8*t1+N+5,8));t2++) {
+      for (t3=max(ceild(16*t2-N-4,8),t1+t2);t3<=min(min(min(min(floord(T+N-3,8),floord(8*t1+N+5,8)),floord(16*t2+N+11,8)),floord(8*t1+8*t2+N+15,8)),floord(8*t2+T+N+4,8));t3++) {
+        for (t4=max(max(max(8*t1,8*t2-N+2),8*t3-N+2),-8*t2+8*t3-N-5);t4<=min(min(min(min(T-1,8*t1+7),8*t2+15),8*t3+6),-8*t2+8*t3+15);t4++) {
+          for (t5=max(max(8*t2,t4+1),8*t3-t4-N+2);t5<=min(min(8*t2+7,8*t3-t4+15),t4+N-2);t5++) {
+            for (t6=max(8*t3,t4+t5+1);t6<=min(8*t3+7,t4+t5+N-2);t6++) {
+              a[(-t4+t5)][(-t4-t5+t6)] = (a[(-t4+t5)-1][(-t4-t5+t6)-1] + a[(-t4+t5)-1][(-t4-t5+t6)] + a[(-t4+t5)-1][(-t4-t5+t6)+1] + a[(-t4+t5)][(-t4-t5+t6)-1] + a[(-t4+t5)][(-t4-t5+t6)] + a[(-t4+t5)][(-t4-t5+t6)+1] + a[(-t4+t5)+1][(-t4-t5+t6)-1] + a[(-t4+t5)+1][(-t4-t5+t6)] + a[(-t4+t5)+1][(-t4-t5+t6)+1])/9.0;;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/* End of CLooG code */
+
+    // IF_TIME(t_end = rtclock());
+    // IF_TIME(fprintf(stdout, "%0.6lfs\n", t_end - t_start));
+
+// #ifdef PERFCTR
+    // PERF_EXIT; 
+// #endif
+
+  // if (fopen(".test", "r")) {
+// #ifdef MPI
+    // if (my_rank == 0) {
+        // print_array();
+    // }
+// #else
+    // print_array();
+// #endif
+  // }
+
+    return 0;
+}

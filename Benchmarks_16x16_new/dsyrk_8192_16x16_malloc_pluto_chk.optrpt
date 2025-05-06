@@ -1,0 +1,218 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 0 (user-specified)
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: 10000
+  -inline-max-per-compile: 500000
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: main()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (main()) [1/4=25.0%] dsyrk_8192_16x16_malloc_pluto_chk.c(69,1)
+  -> EXTERN: (77,3) printf(const char *__restrict__, ...)
+  -> EXTERN: (80,17) malloc(size_t)
+  -> EXTERN: (81,17) memalign(size_t, size_t)
+  -> EXTERN: (87,17) malloc(size_t)
+  -> EXTERN: (88,17) memalign(size_t, size_t)
+  -> EXTERN: (93,1) printf(const char *__restrict__, ...)
+  -> EXTERN: (108,8) sigaction(int, const struct sigaction *__restrict__, struct sigaction *__restrict__)
+  -> EXTERN: (109,5) printf(const char *__restrict__, ...)
+  -> EXTERN: (113,9) __sigsetjmp(struct __jmp_buf_tag *, int)
+  -> EXTERN: (115,5) m5_dump_stats()
+  -> EXTERN: (116,5) m5_checkpoint()
+  -> EXTERN: (120,1) printf(const char *__restrict__, ...)
+  -> (121,1) profile1_start() (isz = 3) (sz = 6)
+  -> EXTERN: (129,17) floor(double)
+  -> EXTERN: (129,17) floor(double)
+  -> EXTERN: (130,20) floor(double)
+  -> EXTERN: (130,20) floor(double)
+  -> EXTERN: (131,21) floor(double)
+  -> EXTERN: (131,21) floor(double)
+  -> (148,1) profile1_end() (isz = 3) (sz = 6)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at dsyrk_8192_16x16_malloc_pluto_chk.c(82,3)
+<Multiversioned v1>
+   remark #25228: Loop multiversioned for Data Dependence
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed FLOW dependence between a line 84 and a line 84
+   remark #15346: vector dependence: assumed ANTI dependence between a line 84 and a line 84
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at dsyrk_8192_16x16_malloc_pluto_chk.c(82,3)
+<Multiversioned v2>
+   remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at dsyrk_8192_16x16_malloc_pluto_chk.c(89,3)
+<Multiversioned v1>
+   remark #25228: Loop multiversioned for Data Dependence
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed FLOW dependence between c line 91 and c line 91
+   remark #15346: vector dependence: assumed ANTI dependence between c line 91 and c line 91
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at dsyrk_8192_16x16_malloc_pluto_chk.c(89,3)
+<Multiversioned v2>
+   remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at dsyrk_8192_16x16_malloc_pluto_chk.c(96,3)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at dsyrk_8192_16x16_malloc_pluto_chk.c(97,5)
+   <Peeled loop for vectorization>
+   LOOP END
+
+   LOOP BEGIN at dsyrk_8192_16x16_malloc_pluto_chk.c(97,5)
+      remark #15388: vectorization support: reference c has aligned access   [ dsyrk_8192_16x16_malloc_pluto_chk.c(98,7) ]
+      remark #15388: vectorization support: reference a has aligned access   [ dsyrk_8192_16x16_malloc_pluto_chk.c(99,7) ]
+      remark #15305: vectorization support: vector length 4
+      remark #15399: vectorization support: unroll factor set to 2
+      remark #15309: vectorization support: normalized vectorization overhead 0.646
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15449: unmasked aligned unit stride stores: 2 
+      remark #15475: --- begin vector loop cost summary ---
+      remark #15476: scalar loop cost: 20 
+      remark #15477: vector loop cost: 6.000 
+      remark #15478: estimated potential speedup: 3.320 
+      remark #15487: type converts: 1 
+      remark #15488: --- end vector loop cost summary ---
+      remark #25015: Estimate of max trip count of loop=1024
+   LOOP END
+
+   LOOP BEGIN at dsyrk_8192_16x16_malloc_pluto_chk.c(97,5)
+   <Alternate Alignment Vectorized Loop>
+      remark #25015: Estimate of max trip count of loop=1024
+   LOOP END
+
+   LOOP BEGIN at dsyrk_8192_16x16_malloc_pluto_chk.c(97,5)
+   <Remainder loop for vectorization>
+      remark #15389: vectorization support: reference c has unaligned access   [ dsyrk_8192_16x16_malloc_pluto_chk.c(98,7) ]
+      remark #15389: vectorization support: reference a has unaligned access   [ dsyrk_8192_16x16_malloc_pluto_chk.c(99,7) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 2
+      remark #15309: vectorization support: normalized vectorization overhead 0.864
+      remark #15301: REMAINDER LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at dsyrk_8192_16x16_malloc_pluto_chk.c(97,5)
+   <Remainder loop for vectorization>
+   LOOP END
+LOOP END
+
+LOOP BEGIN at dsyrk_8192_16x16_malloc_pluto_chk.c(129,17)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at dsyrk_8192_16x16_malloc_pluto_chk.c(130,20)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at dsyrk_8192_16x16_malloc_pluto_chk.c(131,21)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at dsyrk_8192_16x16_malloc_pluto_chk.c(132,9)
+            remark #15542: loop was not vectorized: inner loop was already vectorized
+
+            LOOP BEGIN at dsyrk_8192_16x16_malloc_pluto_chk.c(133,11)
+               remark #25084: Preprocess Loopnests: Moving Out Store    [ dsyrk_8192_16x16_malloc_pluto_chk.c(134,13) ]
+               remark #15542: loop was not vectorized: inner loop was already vectorized
+
+               LOOP BEGIN at dsyrk_8192_16x16_malloc_pluto_chk.c(138,13)
+               <Peeled loop for vectorization>
+               LOOP END
+
+               LOOP BEGIN at dsyrk_8192_16x16_malloc_pluto_chk.c(138,13)
+                  remark #15388: vectorization support: reference c has aligned access   [ dsyrk_8192_16x16_malloc_pluto_chk.c(139,15) ]
+                  remark #15389: vectorization support: reference c has unaligned access   [ dsyrk_8192_16x16_malloc_pluto_chk.c(139,15) ]
+                  remark #15389: vectorization support: reference a has unaligned access   [ dsyrk_8192_16x16_malloc_pluto_chk.c(139,15) ]
+                  remark #15381: vectorization support: unaligned access used inside loop body
+                  remark #15305: vectorization support: vector length 2
+                  remark #15399: vectorization support: unroll factor set to 4
+                  remark #15309: vectorization support: normalized vectorization overhead 0.675
+                  remark #15300: LOOP WAS VECTORIZED
+                  remark #15442: entire loop may be executed in remainder
+                  remark #15449: unmasked aligned unit stride stores: 1 
+                  remark #15450: unmasked unaligned unit stride loads: 2 
+                  remark #15475: --- begin vector loop cost summary ---
+                  remark #15476: scalar loop cost: 27 
+                  remark #15477: vector loop cost: 5.000 
+                  remark #15478: estimated potential speedup: 5.010 
+                  remark #15488: --- end vector loop cost summary ---
+               LOOP END
+
+               LOOP BEGIN at dsyrk_8192_16x16_malloc_pluto_chk.c(138,13)
+               <Remainder loop for vectorization>
+                  remark #15389: vectorization support: reference c has unaligned access   [ dsyrk_8192_16x16_malloc_pluto_chk.c(139,15) ]
+                  remark #15389: vectorization support: reference c has unaligned access   [ dsyrk_8192_16x16_malloc_pluto_chk.c(139,15) ]
+                  remark #15389: vectorization support: reference a has unaligned access   [ dsyrk_8192_16x16_malloc_pluto_chk.c(139,15) ]
+                  remark #15381: vectorization support: unaligned access used inside loop body
+                  remark #15305: vectorization support: vector length 2
+                  remark #15309: vectorization support: normalized vectorization overhead 1.167
+                  remark #15301: REMAINDER LOOP WAS VECTORIZED
+               LOOP END
+
+               LOOP BEGIN at dsyrk_8192_16x16_malloc_pluto_chk.c(138,13)
+               <Remainder loop for vectorization>
+               LOOP END
+            LOOP END
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================
+
+Begin optimization report for: profile1_start()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (profile1_start()) [2/4=50.0%] dsyrk_8192_16x16_malloc_pluto_chk.c(58,1)
+  -> EXTERN: (59,1) printf(const char *__restrict__, ...)
+
+===========================================================================
+
+Begin optimization report for: profile1_end()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (profile1_end()) [3/4=75.0%] dsyrk_8192_16x16_malloc_pluto_chk.c(64,1)
+  -> EXTERN: (65,1) printf(const char *__restrict__, ...)
+
+===========================================================================
+
+Begin optimization report for: sigill_handler(int, siginfo_t *, void *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (sigill_handler(int, siginfo_t *, void *)) [4/4=100.0%] dsyrk_8192_16x16_malloc_pluto_chk.c(23,1)
+  -> EXTERN: (31,3) longjmp(struct __jmp_buf_tag *, int)
+
+===========================================================================

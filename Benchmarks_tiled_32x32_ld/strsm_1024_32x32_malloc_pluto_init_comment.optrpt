@@ -1,0 +1,173 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: true
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 0 (user-specified)
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: 10000
+  -inline-max-per-compile: 500000
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: main()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (main()) [1/1=100.0%] strsm_1024_32x32_malloc_pluto_init_comment.c(49,1)
+  -> EXTERN: (64,1) printf(const char *__restrict__, ...)
+  -> EXTERN: (67,21) malloc(size_t)
+  -> EXTERN: (68,20) memalign(size_t, size_t)
+  -> EXTERN: (74,20) malloc(size_t)
+  -> EXTERN: (75,20) memalign(size_t, size_t)
+  -> EXTERN: (81,2) printf(const char *__restrict__, ...)
+  -> EXTERN: (100,17) floor(double)
+  -> EXTERN: (100,17) floor(double)
+  -> EXTERN: (101,19) floor(double)
+  -> EXTERN: (101,19) floor(double)
+  -> EXTERN: (102,22) floor(double)
+  -> EXTERN: (102,22) floor(double)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at strsm_1024_32x32_malloc_pluto_init_comment.c(69,1)
+<Multiversioned v1>
+   remark #25228: Loop multiversioned for Data Dependence
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed FLOW dependence between a line 71 and a line 71
+   remark #15346: vector dependence: assumed ANTI dependence between a line 71 and a line 71
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at strsm_1024_32x32_malloc_pluto_init_comment.c(69,1)
+<Multiversioned v2>
+   remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at strsm_1024_32x32_malloc_pluto_init_comment.c(76,1)
+<Multiversioned v1>
+   remark #25228: Loop multiversioned for Data Dependence
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed FLOW dependence between b line 78 and b line 78
+   remark #15346: vector dependence: assumed ANTI dependence between b line 78 and b line 78
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at strsm_1024_32x32_malloc_pluto_init_comment.c(76,1)
+<Multiversioned v2>
+   remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at strsm_1024_32x32_malloc_pluto_init_comment.c(100,17)
+   remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+   LOOP BEGIN at strsm_1024_32x32_malloc_pluto_init_comment.c(101,19)
+      remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+      LOOP BEGIN at strsm_1024_32x32_malloc_pluto_init_comment.c(102,22)
+         remark #15541: outer loop was not auto-vectorized: consider using SIMD directive
+
+         LOOP BEGIN at strsm_1024_32x32_malloc_pluto_init_comment.c(104,11)
+            remark #15344: loop was not vectorized: vector dependence prevents vectorization
+            remark #15346: vector dependence: assumed OUTPUT dependence between b line 107 and b line 112
+            remark #15346: vector dependence: assumed OUTPUT dependence between b line 112 and b line 107
+
+            LOOP BEGIN at strsm_1024_32x32_malloc_pluto_init_comment.c(105,13)
+               remark #15344: loop was not vectorized: vector dependence prevents vectorization
+               remark #15346: vector dependence: assumed OUTPUT dependence between b line 107 and b line 107
+               remark #15346: vector dependence: assumed OUTPUT dependence between b line 107 and b line 107
+               remark #25015: Estimate of max trip count of loop=7
+
+               LOOP BEGIN at strsm_1024_32x32_malloc_pluto_init_comment.c(106,15)
+                  remark #15344: loop was not vectorized: vector dependence prevents vectorization
+                  remark #15346: vector dependence: assumed FLOW dependence between b line 107 and b line 107
+                  remark #15346: vector dependence: assumed ANTI dependence between b line 107 and b line 107
+                  remark #25439: unrolled with remainder by 2  
+               LOOP END
+
+               LOOP BEGIN at strsm_1024_32x32_malloc_pluto_init_comment.c(106,15)
+               <Remainder>
+               LOOP END
+            LOOP END
+
+            LOOP BEGIN at strsm_1024_32x32_malloc_pluto_init_comment.c(111,13)
+               remark #15344: loop was not vectorized: vector dependence prevents vectorization
+               remark #15346: vector dependence: assumed FLOW dependence between b line 112 and b line 112
+               remark #15346: vector dependence: assumed ANTI dependence between b line 112 and b line 112
+               remark #25439: unrolled with remainder by 2  
+            LOOP END
+
+            LOOP BEGIN at strsm_1024_32x32_malloc_pluto_init_comment.c(111,13)
+            <Remainder>
+            LOOP END
+         LOOP END
+
+         LOOP BEGIN at strsm_1024_32x32_malloc_pluto_init_comment.c(117,11)
+            remark #15344: loop was not vectorized: vector dependence prevents vectorization
+            remark #15346: vector dependence: assumed OUTPUT dependence between b line 119 and b line 121
+            remark #15346: vector dependence: assumed OUTPUT dependence between b line 121 and b line 119
+
+            LOOP BEGIN at strsm_1024_32x32_malloc_pluto_init_comment.c(118,13)
+               remark #15344: loop was not vectorized: vector dependence prevents vectorization
+               remark #15346: vector dependence: assumed OUTPUT dependence between b line 119 and b line 121
+               remark #15346: vector dependence: assumed OUTPUT dependence between b line 121 and b line 119
+
+               LOOP BEGIN at strsm_1024_32x32_malloc_pluto_init_comment.c(120,15)
+                  remark #15344: loop was not vectorized: vector dependence prevents vectorization
+                  remark #15346: vector dependence: assumed FLOW dependence between b line 121 and b line 121
+                  remark #15346: vector dependence: assumed ANTI dependence between b line 121 and b line 121
+                  remark #25439: unrolled with remainder by 2  
+               LOOP END
+
+               LOOP BEGIN at strsm_1024_32x32_malloc_pluto_init_comment.c(120,15)
+               <Remainder>
+               LOOP END
+            LOOP END
+         LOOP END
+
+         LOOP BEGIN at strsm_1024_32x32_malloc_pluto_init_comment.c(127,11)
+            remark #15344: loop was not vectorized: vector dependence prevents vectorization
+            remark #15346: vector dependence: assumed OUTPUT dependence between b line 130 and b line 130
+            remark #15346: vector dependence: assumed OUTPUT dependence between b line 130 and b line 130
+
+            LOOP BEGIN at strsm_1024_32x32_malloc_pluto_init_comment.c(128,13)
+               remark #15344: loop was not vectorized: vector dependence prevents vectorization
+               remark #15346: vector dependence: assumed OUTPUT dependence between b line 130 and b line 130
+               remark #15346: vector dependence: assumed OUTPUT dependence between b line 130 and b line 130
+               remark #25015: Estimate of max trip count of loop=32
+
+               LOOP BEGIN at strsm_1024_32x32_malloc_pluto_init_comment.c(129,15)
+                  remark #15344: loop was not vectorized: vector dependence prevents vectorization
+                  remark #15346: vector dependence: assumed FLOW dependence between b line 130 and b line 130
+                  remark #15346: vector dependence: assumed ANTI dependence between b line 130 and b line 130
+                  remark #25439: unrolled with remainder by 2  
+               LOOP END
+
+               LOOP BEGIN at strsm_1024_32x32_malloc_pluto_init_comment.c(129,15)
+               <Remainder>
+               LOOP END
+            LOOP END
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================

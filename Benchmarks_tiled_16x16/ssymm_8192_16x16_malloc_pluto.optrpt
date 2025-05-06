@@ -1,0 +1,298 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: true
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 0 (user-specified)
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: 10000
+  -inline-max-per-compile: 500000
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: main()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (main()) [1/1=100.0%] /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(39,1)
+  -> EXTERN: (48,1) printf(const char *__restrict__, ...)
+  -> EXTERN: (51,15) malloc(size_t)
+  -> EXTERN: (52,15) memalign(size_t, size_t)
+  -> EXTERN: (58,15) malloc(size_t)
+  -> EXTERN: (59,15) memalign(size_t, size_t)
+  -> EXTERN: (64,16) malloc(size_t)
+  -> EXTERN: (65,15) memalign(size_t, size_t)
+  -> EXTERN: (71,1) printf(const char *__restrict__, ...)
+  -> EXTERN: (95,19) floor(double)
+  -> EXTERN: (95,19) floor(double)
+  -> EXTERN: (96,21) floor(double)
+  -> EXTERN: (96,21) floor(double)
+  -> EXTERN: (97,23) floor(double)
+  -> EXTERN: (97,23) floor(double)
+  -> EXTERN: (109,17) floor(double)
+  -> EXTERN: (109,17) floor(double)
+  -> EXTERN: (110,19) floor(double)
+  -> EXTERN: (110,19) floor(double)
+  -> EXTERN: (123,19) floor(double)
+  -> EXTERN: (123,19) floor(double)
+  -> EXTERN: (124,21) floor(double)
+  -> EXTERN: (124,21) floor(double)
+  -> EXTERN: (125,24) floor(double)
+  -> EXTERN: (125,24) floor(double)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(53,1)
+<Multiversioned v1>
+   remark #25228: Loop multiversioned for Data Dependence
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed FLOW dependence between a line 55 and a line 55
+   remark #15346: vector dependence: assumed ANTI dependence between a line 55 and a line 55
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(53,1)
+<Multiversioned v2>
+   remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(60,1)
+<Multiversioned v1>
+   remark #25228: Loop multiversioned for Data Dependence
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed FLOW dependence between b line 62 and b line 62
+   remark #15346: vector dependence: assumed ANTI dependence between b line 62 and b line 62
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(60,1)
+<Multiversioned v2>
+   remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(66,1)
+<Multiversioned v1>
+   remark #25228: Loop multiversioned for Data Dependence
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization
+   remark #15346: vector dependence: assumed FLOW dependence between c line 68 and c line 68
+   remark #15346: vector dependence: assumed ANTI dependence between c line 68 and c line 68
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(66,1)
+<Multiversioned v2>
+   remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+   remark #25438: unrolled without remainder by 2  
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(75,3)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(76,5)
+   <Peeled loop for vectorization>
+   LOOP END
+
+   LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(76,5)
+      remark #15389: vectorization support: reference c has unaligned access   [ /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(77,7) ]
+      remark #15388: vectorization support: reference b has aligned access   [ /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(78,17) ]
+      remark #15388: vectorization support: reference a has aligned access   [ /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(78,7) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 4
+      remark #15309: vectorization support: normalized vectorization overhead 0.875
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15449: unmasked aligned unit stride stores: 2 
+      remark #15451: unmasked unaligned unit stride stores: 1 
+      remark #15475: --- begin vector loop cost summary ---
+      remark #15476: scalar loop cost: 31 
+      remark #15477: vector loop cost: 10.000 
+      remark #15478: estimated potential speedup: 3.090 
+      remark #15487: type converts: 1 
+      remark #15488: --- end vector loop cost summary ---
+      remark #25015: Estimate of max trip count of loop=2048
+   LOOP END
+
+   LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(76,5)
+   <Alternate Alignment Vectorized Loop>
+      remark #25015: Estimate of max trip count of loop=2048
+   LOOP END
+
+   LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(76,5)
+   <Remainder loop for vectorization>
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(95,19)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(96,21)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(97,49)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(98,11)
+            remark #15542: loop was not vectorized: inner loop was already vectorized
+
+            LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(99,13)
+               remark #15542: loop was not vectorized: inner loop was already vectorized
+
+               LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(100,15)
+                  remark #15305: vectorization support: vector length 2
+                  remark #15399: vectorization support: unroll factor set to 8
+                  remark #15309: vectorization support: normalized vectorization overhead 0.525
+                  remark #15300: LOOP WAS VECTORIZED
+                  remark #15475: --- begin vector loop cost summary ---
+                  remark #15476: scalar loop cost: 27 
+                  remark #15477: vector loop cost: 2.500 
+                  remark #15478: estimated potential speedup: 7.600 
+                  remark #15488: --- end vector loop cost summary ---
+               LOOP END
+
+               LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(100,15)
+               <Remainder loop for vectorization>
+                  remark #15305: vectorization support: vector length 2
+                  remark #15309: vectorization support: normalized vectorization overhead 6.200
+                  remark #15301: REMAINDER LOOP WAS VECTORIZED
+               LOOP END
+
+               LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(100,15)
+               <Remainder loop for vectorization>
+               LOOP END
+            LOOP END
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(109,17)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(110,19)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(111,7)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(116,9)
+         <Peeled loop for vectorization>
+         LOOP END
+
+         LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(116,9)
+            remark #15388: vectorization support: reference c has aligned access   [ /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(117,11) ]
+            remark #15389: vectorization support: reference c has unaligned access   [ /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(117,11) ]
+            remark #15389: vectorization support: reference a has unaligned access   [ /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(117,11) ]
+            remark #15389: vectorization support: reference b has unaligned access   [ /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(117,11) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15305: vectorization support: vector length 2
+            remark #15399: vectorization support: unroll factor set to 4
+            remark #15309: vectorization support: normalized vectorization overhead 0.315
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15442: entire loop may be executed in remainder
+            remark #15449: unmasked aligned unit stride stores: 1 
+            remark #15450: unmasked unaligned unit stride loads: 3 
+            remark #15458: masked indexed (or gather) loads: 1 
+            remark #15475: --- begin vector loop cost summary ---
+            remark #15476: scalar loop cost: 27 
+            remark #15477: vector loop cost: 11.500 
+            remark #15478: estimated potential speedup: 2.280 
+            remark #15487: type converts: 1 
+            remark #15488: --- end vector loop cost summary ---
+         LOOP END
+
+         LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(116,9)
+         <Remainder loop for vectorization>
+            remark #15389: vectorization support: reference c has unaligned access   [ /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(117,11) ]
+            remark #15389: vectorization support: reference c has unaligned access   [ /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(117,11) ]
+            remark #15389: vectorization support: reference a has unaligned access   [ /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(117,11) ]
+            remark #15389: vectorization support: reference b has unaligned access   [ /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(117,11) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15305: vectorization support: vector length 2
+            remark #15309: vectorization support: normalized vectorization overhead 0.697
+            remark #15301: REMAINDER LOOP WAS VECTORIZED
+         LOOP END
+
+         LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(116,9)
+         <Remainder loop for vectorization>
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(123,19)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(124,21)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(125,24)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(126,11)
+            remark #15542: loop was not vectorized: inner loop was already vectorized
+
+            LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(127,13)
+               remark #15542: loop was not vectorized: inner loop was already vectorized
+
+               LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(132,15)
+               <Peeled loop for vectorization>
+               LOOP END
+
+               LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(132,15)
+                  remark #15388: vectorization support: reference c has aligned access   [ /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(133,17) ]
+                  remark #15389: vectorization support: reference c has unaligned access   [ /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(133,17) ]
+                  remark #15389: vectorization support: reference a has unaligned access   [ /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(133,17) ]
+                  remark #15381: vectorization support: unaligned access used inside loop body
+                  remark #15305: vectorization support: vector length 2
+                  remark #15399: vectorization support: unroll factor set to 4
+                  remark #15309: vectorization support: normalized vectorization overhead 0.675
+                  remark #15300: LOOP WAS VECTORIZED
+                  remark #15442: entire loop may be executed in remainder
+                  remark #15449: unmasked aligned unit stride stores: 1 
+                  remark #15450: unmasked unaligned unit stride loads: 2 
+                  remark #15475: --- begin vector loop cost summary ---
+                  remark #15476: scalar loop cost: 27 
+                  remark #15477: vector loop cost: 5.000 
+                  remark #15478: estimated potential speedup: 5.010 
+                  remark #15488: --- end vector loop cost summary ---
+               LOOP END
+
+               LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(132,15)
+               <Remainder loop for vectorization>
+                  remark #15389: vectorization support: reference c has unaligned access   [ /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(133,17) ]
+                  remark #15389: vectorization support: reference c has unaligned access   [ /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(133,17) ]
+                  remark #15389: vectorization support: reference a has unaligned access   [ /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(133,17) ]
+                  remark #15381: vectorization support: unaligned access used inside loop body
+                  remark #15305: vectorization support: vector length 2
+                  remark #15309: vectorization support: normalized vectorization overhead 1.167
+                  remark #15301: REMAINDER LOOP WAS VECTORIZED
+               LOOP END
+
+               LOOP BEGIN at /home/mdl/hut95/Benchmarks_tiled_16x16/ssymm_8192_16x16_malloc_pluto.c(132,15)
+               <Remainder loop for vectorization>
+               LOOP END
+            LOOP END
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================
