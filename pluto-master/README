@@ -1,13 +1,3 @@
-#
-# Pluto README
-#
-# Uday Bondhugula
-# uday@csa.iisc.ernet.in
-#
-
-LICENSE
-
-Pluto is available under GPL v3, and libpluto is available under LGPL v2.1.
 
 INSTALLING PLUTO
 
@@ -109,48 +99,6 @@ Run
 or see documentation (doc/DOC.txt) for details
 
 
-TRYING ANY INCLUDED EXAMPLE CODE
-
-Lets say we are trying the 2-d gauss seidel kernel. In examples/seidel, do 
-'make par'; this will generate seidel.par.c from seidel.c and also compile 
-it to generate 'par'.  Likewise, 'make tiled' for 'tiled' and 'make orig' 
-for 'orig'.
-
-$ cd examples/seidel
-
-seidel.c: This is the original code (the kernel in this code is extracted).  
-'orig' is the corresponding executable when compiled with the native 
-compiler (gcc or icc for eg.) with optimization flags, 'orig_par' with the 
-native compiler's auto-parallelization enabled.
-
-seidel.opt.c: This is the transformed code without tiling (this is of not 
-much use, except for seeing benefits of fusion in some cases). 'opt' is the 
-corresponding executable.
-
-seidel.tiled.c: This is Pluto generated code optimized for locality with 
-tiling and other transformations, but not not parallelized - this should be 
-used for sequential execution. 'tiled' is the corresponding executable.
-
-seidel.par.c: This is Pluto parallelized code optimized for locality and 
-parallelism  with tiling and other transformations. This code has OpenMP 
-pragmas. 'par' is the corresponding executable.
-
-- To change any of the flags used for an example, edit the top section of 
-  examples/common.mk or the Makefile in the example directory
-
-- To manually specify tile sizes, create tile.sizes; see examples/matmul/ 
-   for example or doc/DOC.txt for more information on setting tile sizes. 
-
-The executables already have timers; you just have to run them and that will 
-print execution time for the core part of the computation as well.
-
-To run the Pluto parallelized version:
-
-$ OMP_NUM_THREADS=4; ./par
-
-To run native compiler optimized/auto-parallelized version:
-
-$ OMP_NUM_THREADS=4; ./orig_par
 
 To run the original unparallelized code:
 
@@ -163,26 +111,9 @@ $ ./tiled
 - 'make clean' in the particular example's directory removes all executables 
     as well as generated codes
 
-To launch a complete verification that compares output of tiled, par
-with orig for all examples, in examples/, run 'make test'.
-
-[examples/ ]$ make test
 
 
 
-MORE INFO
-
-* See doc/DOC.txt for an overview of the system and details on all 
-command-line options.
-
-* For specifying custom tile sizes through 'tile.sizes' file, see 
-doc/DOC.txt
-
-* For specifying custom fusion structure through '.fst' file, see 
-doc/DOC.txt
 
 
-CONTACT
 
-Please send all bugs reports and comments to Uday Bondhugula 
-<uday@csa.iisc.ernet.in> or post of pluto-development@googlegroups.com.
